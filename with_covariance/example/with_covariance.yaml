@@ -3,8 +3,6 @@
 
 /**:
     ros__parameters:
-
-
         # subscribe to some Pose, publish as PoseWithCovarianceStamped
         pose0: pose_gt
         pose0.frame_id: base_link
