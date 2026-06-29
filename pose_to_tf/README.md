@@ -14,7 +14,8 @@ Supported messages are:
 
 - `topic`: topic to subscribe to (defaults to `pose_gt`)
 - `parent_frame`: parent frame to be used in published messages (defaults to `world`)
-- `child_frame`: child frame to be used in tf publisher (defaults to `base_link`)
+- `child_frame`: child frame to be used in tf publisher (defaults to empty)
+- `inverse` (default False): publish the inverse of the received transform
 
 
 The frame parameters are only to complement messages that do not include the information:
@@ -22,6 +23,8 @@ The frame parameters are only to complement messages that do not include the inf
 - `Pose` and `Transform` do not convey any frame, so both parameters are used;
 - `PoseStamped` and `Imu` only convey `child_frame` in the header, the `parent_frame` parameter is thus used;
 - `TransformStamped` and `Odometry` convey both `child_frame` explicitely and `parent_frame` in the header.
+
+In any case, if frame parameters are not empty they will override the frames from the incoming messages.
 
 ## Running the node
 
