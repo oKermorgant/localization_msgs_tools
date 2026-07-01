@@ -1,12 +1,12 @@
-#ifndef WITH_COVARIANCE_POSE_HPP
-#define WITH_COVARIANCE_POSE_HPP
+#ifndef LOC_MSGS_TOOLS_POSE_HPP
+#define LOC_MSGS_TOOLS_POSE_HPP
 
 #include <geometry_msgs/msg/pose.hpp>
 #include <geometry_msgs/msg/pose_stamped.hpp>
 #include <geometry_msgs/msg/pose_with_covariance_stamped.hpp>
 #include "common.hpp"
 
-namespace with_covariance
+namespace localization_msgs_tools
 {
 
 using namespace geometry_msgs::msg;
@@ -67,4 +67,4 @@ struct PoseCovStampedBridge : public MsgBridge<PoseWithCovarianceStamped, PoseWi
 }
 
 
-#endif // WITH_COVARIANCE_POSE_HPP
+#endif // LOC_MSGS_TOOLS_POSE_HPP

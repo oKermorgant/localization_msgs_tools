@@ -19,7 +19,7 @@ using namespace sensor_msgs::msg;
 using std_msgs::msg::Header;
 using namespace std;
 
-namespace pose_to_tf
+namespace localization_msgs_tools
 {
 using nav_msgs::msg::Odometry;
 
@@ -173,4 +173,4 @@ private:
 
 #include "rclcpp_components/register_node_macro.hpp"
 
-RCLCPP_COMPONENTS_REGISTER_NODE(pose_to_tf::Pose2TF)
+RCLCPP_COMPONENTS_REGISTER_NODE(localization_msgs_tools::Pose2TF)

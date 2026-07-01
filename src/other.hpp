@@ -1,12 +1,12 @@
-#ifndef WITH_COVARIANCE_OTHER_HPP
-#define WITH_COVARIANCE_OTHER_HPP
+#ifndef LOC_MSGS_TOOLS_OTHER_HPP
+#define LOC_MSGS_TOOLS_OTHER_HPP
 
 #include <sensor_msgs/msg/imu.hpp>
 #include <sensor_msgs/msg/nav_sat_fix.hpp>
 #include <nav_msgs/msg/odometry.hpp>
 #include "common.hpp"
 
-namespace with_covariance
+namespace localization_msgs_tools
 {
 
 using namespace nav_msgs::msg;
@@ -60,4 +60,4 @@ struct NavSatBridge : public MsgBridge<NavSatFix, NavSatFix>
 }
 
 
-#endif // WITH_COVARIANCE_OTHER_HPP
+#endif // LOC_MSGS_TOOLS_OTHER_HPP

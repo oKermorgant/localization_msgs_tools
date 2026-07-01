@@ -10,7 +10,7 @@
 #include "twist.hpp"
 #include "other.hpp"
 
-namespace with_covariance
+namespace localization_msgs_tools
 {
 
 using namespace std::chrono_literals;
@@ -209,4 +209,4 @@ private:
 
 #include "rclcpp_components/register_node_macro.hpp"
 
-RCLCPP_COMPONENTS_REGISTER_NODE(with_covariance::WithCovariance)
+RCLCPP_COMPONENTS_REGISTER_NODE(localization_msgs_tools::WithCovariance)

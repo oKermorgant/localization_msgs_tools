@@ -1,12 +1,12 @@
-#ifndef WITH_COVARIANCE_TWIST_HPP
-#define WITH_COVARIANCE_TWIST_HPP
+#ifndef LOC_MSGS_TOOLS_TWIST_HPP
+#define LOC_MSGS_TOOLS_TWIST_HPP
 
 #include <geometry_msgs/msg/twist.hpp>
 #include <geometry_msgs/msg/twist_stamped.hpp>
 #include <geometry_msgs/msg/twist_with_covariance_stamped.hpp>
 #include "common.hpp"
 
-namespace with_covariance
+namespace localization_msgs_tools
 {
 
 using namespace geometry_msgs::msg;
@@ -66,4 +66,4 @@ struct TwistCovStampedBridge : public MsgBridge<TwistWithCovarianceStamped, Twis
 }
 
 
-#endif // WITH_COVARIANCE_TWIST_HPP
+#endif // LOC_MSGS_TOOLS_TWIST_HPP

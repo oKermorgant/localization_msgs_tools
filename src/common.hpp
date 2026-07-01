@@ -1,10 +1,10 @@
-#ifndef WITH_COVARIANCE_COMMON_HPP
-#define WITH_COVARIANCE_COMMON_HPP
+#ifndef LOC_MSGS_TOOLS_COMMON_HPP
+#define LOC_MSGS_TOOLS_COMMON_HPP
 
 #include <rclcpp/rclcpp.hpp>
 #include <rclcpp/node.hpp>
 
-namespace with_covariance
+namespace localization_msgs_tools
 {
 
 using Cov3 = std::vector<double>;
@@ -117,4 +117,4 @@ struct MsgBridge : public AnyBridge
 
 
 
-#endif // WITH_COVARIANCE_COMMON_HPP
+#endif // LOC_MSGS_TOOLS_COMMON_HPP
