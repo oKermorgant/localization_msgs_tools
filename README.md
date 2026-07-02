@@ -1,9 +1,11 @@
-# Packages to bridge some messages for robot localization
+# Bridge and adapt messages for robot localization
+
+This package offers two nodes to convert various localization-related messages.
 
 # `pose_to_tf`: forward pose messages to tf tree
 
-This node subscribes to a pose topic. It can be used to simulate perfect localization (on `/tf`) from a ground truth topic published by a simulator.
-Supported messages are:
+This node subscribes to a pose topic and forwards it to `/tf`.
+It can be used to simulate perfect localization from a ground truth topic published e.g. by a simulator. Supported messages are:
 
 - `geometry_msgs/Pose`
 - `geometry_msgs/PoseStamped`
@@ -17,13 +19,12 @@ Supported messages are:
 - `topic`: topic to subscribe to (defaults to `pose_gt`)
 - `parent_frame`: parent frame to be used in published messages (defaults to `world`)
 - `child_frame`: child frame to be used in tf publisher (defaults to empty)
-- `inverse` (default False): publish the inverse of the received transform
-
+- `inverse` (default False): publish the inverse of the received transform, can be useful to calibrate sensors
 
 The frame parameters are only to complement messages that do not include the information:
 
-- `Pose` and `Transform` do not convey any frame, so both parameters are used;
-- `PoseStamped` and `Imu` only convey `child_frame` in the header, the `parent_frame` parameter is thus used;
+- `Pose` and `Transform` do not convey any frame, so both parameters are required;
+- `PoseStamped` and `Imu` only convey `child_frame` in the header, the `parent_frame` parameter is thus mandatory;
 - `TransformStamped` and `Odometry` convey both `child_frame` explicitely and `parent_frame` in the header.
 
 In any case, if frame parameters are not empty they will override the frames from the incoming messages.
@@ -38,15 +39,12 @@ The node is available:
 
 # `with_covariance`: add covariance to localization messages
 
-This node is meant to bridge ROS messages by adding or replacing missing covariance info. The classical use is messages
-coming out of Gazebo that usually have no covariance. Some frameworks or sensors also publish covariance-free messages, making them unsuitable for use with classical ROS tools.
+This node is meant to bridge ROS messages by adding or replacing covariance info. A classical use is messages
+coming out of simulation that may have no covariance. Some frameworks or sensors also publish covariance-free messages, making them unsuitable for use with classical ROS tools. It can also help tuning the covariance at runtime.
 
+Supported messages are:
 
-## Main node
-
-The `with_covariance` node takes in a number of messages, and republish them on another topic after adding covariance information. Supported messages are:
-
--  `geometry_msgs/PoseWithCovarianceStamped`
+- `geometry_msgs/PoseWithCovarianceStamped`
     - can also take in `geometry_msgs/Pose` or `geometry_msgs/PoseStamped`
 - `geometry_msgs/TwistWithCovarianceStamped`
     - can also take in `geometry_msgs/Twist` or  `geometry_msgs/TwistStamped`
@@ -56,15 +54,16 @@ The `with_covariance` node takes in a number of messages, and republish them on 
 
 ## Parameters
 
-Similarly to the `robot_localization` package, the `with_covariance` node takes in possibly various messages, each of them having to be associated:
+Similarly to the well-known `robot_localization` nodes, the `with_covariance` node takes in possibly various messages, each of them having to be associated:
 
 - an input type, defined by the name of the parameter (`pose0`, `imu0`, etc.)
 - input and output topics
-- covariance information to be added as length-3 vectors
+- covariance information as length-3 vectors
     - `xyz` and `rpy` for pose
     - `linvel` and `angvel` for twist
     - `accel` for acceleration
     - covariances that are not set from the parameters will be copied from the incoming message, if any
+    - covariance parameters can be changed at runtime
 - `frame_id` if they are not part of the incoming messages (e.g. `Pose` and `Twist`)
 
 An example is provided for all supported messages:
