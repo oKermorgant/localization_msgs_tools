@@ -1,11 +1,12 @@
 
 #include <rclcpp/rclcpp.hpp>
-#include <tf2_eigen/tf2_eigen.hpp>
 
 #ifdef ROS_HEADERS_HPP_EXTENSION
 #include <tf2_ros/transform_broadcaster.hpp>
+#include <tf2_eigen/tf2_eigen.hpp>
 #else
 #include <tf2_ros/transform_broadcaster.h>
+#include <tf2_eigen/tf2_eigen.h>
 #endif
 
 // supported incoming poses
