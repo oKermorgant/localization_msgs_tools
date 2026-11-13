@@ -5,7 +5,7 @@ find_package(ament_cmake_auto REQUIRED)
 ament_auto_find_build_dependencies()
 
 # get ROSDISTRO to adapt fors header extension
-if("$ENV{ROS_DISTRO}" STRGREATER_EQUAL "lyrical")
+if("$ENV{ROS_DISTRO}" STRGREATER_EQUAL "jazzy")
   add_compile_definitions(ROS_HEADERS_HPP_EXTENSION)
 endif()
 
