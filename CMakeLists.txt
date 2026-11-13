@@ -4,7 +4,7 @@ project(localization_msgs_tools)
 find_package(ament_cmake_auto REQUIRED)
 ament_auto_find_build_dependencies()
 
-if(tf2_ros_VERSION VERSION_GREATER_EQUAL "0.40.0")
+if(tf2_ros_VERSION VERSION_GREATER_EQUAL "0.36.0")
   # https://github.com/ros2/geometry2/pull/720
   add_compile_definitions(ROS_HEADERS_HPP_EXTENSION)
 endif()
